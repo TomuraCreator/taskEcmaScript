@@ -1,28 +1,20 @@
 'use strict';
 
-const bonus = 0.05;
-let limitSum = 10000;
+let costs = [200, 550, 4000, 23, 58, 5000, 485, 711];
+const bonus = 5;
+const limBuy = 10000;
 
-let item = document.querySelectorAll("div .item");
-let sum_total = document.querySelector(".total p");
-let button = document.querySelector(".button");
-
-    function discount() {
-        let text1 =  document.querySelector(".wrapper .text_1").value;
-        let text2 =  document.querySelector(".wrapper .text_2").value;
-        let text3 =  document.querySelector(".wrapper .text_3").value;
-        let text4 =  document.querySelector(".wrapper .text_4").value;
-        let t1 = parseInt(text1),
-            t2 = parseInt(text2),
-            t3 = parseInt(text3),
-            t4 = parseInt(text4);
-        let sum = t1 + t2 + t3 + t4;
-        if (sum > limitSum) {
-            let j = sum - (sum * bonus);
-            let jet = Math.round(j);
-            return sum_total.innerHTML = `Сумма вашего заказа с учетом скидки 5%: ${jet}.`;
+window.onload = function () {
+    console.log(`Let's rock! `);
+    for (let index of costs) {
+        let sum = index + index + index;
+        if (sum > limBuy) {
+            let buy = sum * (bonus * 0.01);
+            let discount = sum - buy;
+            console.log(`Цена ваших покупок: ${discount}руб.\n Ваша скидка составила: ${buy}руб.\n\n\n`);
         } else {
-            return sum_total.innerHTML = `Сумма вашего заказа: <span style="color: blueviolet">${sum}.</span>`;
+            console.log(`Цена ваших покупок: ${sum}руб.\n\n\n`);
         }
     }
-button.onclick = discount;
+};
+
